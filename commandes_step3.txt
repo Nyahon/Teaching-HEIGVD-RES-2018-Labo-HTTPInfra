@@ -1,0 +1,12 @@
+cd /etc/apache2/sites-available
+cp 000-... 001-reverse-proxy.conf
+copier le contenu de t dedans
+ensuite:
+service apache2 restart
+a2enmod proxy
+a2enomd proxy_http
+service apache2 restart
+service apache2 reload
+a2ensite 001*
+
+Voilà.
