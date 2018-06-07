@@ -17,7 +17,7 @@ create_net(){
         #remove previously created subnet
         docker network rm priv_net 2>/dev/null
         #(re)create it
-        docker network create --subnet=172.19.0.0/16 priv_net
+        #docker network create --subnet=172.19.0.0/16 priv_net
 
 }
 build_server() {
@@ -42,7 +42,7 @@ run_server(){
      # --net : connect network to previously created subnet
      # -p    : map container port 80 to machine port 9090
      # --ip  : set a fixed ip
-	 docker run -e TZ=Europe/Zurich -d --net priv_net -p 9090:80 --ip 172.19.0.41 $imgName
+	 docker run -e TZ=Europe/Zurich -d -p 9090:80  $imgName
 }
 
 authors() { echo "=====authors=======";
