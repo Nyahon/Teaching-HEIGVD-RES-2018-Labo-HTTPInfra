@@ -45,6 +45,10 @@ run_server(){
 	 docker run -e TZ=Europe/Zurich -d -p 9090:80  $imgName
 }
 
+run_in_bash(){
+	docker run -e TZ=Europe/Zurich -it $imgname /bin/bash
+}
+
 authors() { echo "=====authors=======";
             echo "Yohann    Meyer";
             echo "Johanna   Melly";
@@ -77,6 +81,9 @@ while getopts ":arbh" o; do
         h)
             helpf
             ;;
+	t)
+	    run_in_bash
+	    ;;
         *)
             usage
             ;;
