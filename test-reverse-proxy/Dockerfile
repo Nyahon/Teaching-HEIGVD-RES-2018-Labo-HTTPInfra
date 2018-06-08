@@ -5,10 +5,11 @@ RUN apt-get update && \
 	apt-get install -y vim
 #RUN apt-get install vim
 #RUN Y
-COPY src .
-RUN service apache2 restart
+COPY apache2-foreground /usr/local/bin/
+COPY src/* /etc/apache2/sites-available/
+#RUN service apache2 restart
 RUN a2enmod proxy proxy_http
-RUN service apache2 restart
+#RUN service apache2 restart
 #RUN service apache2 reload
 RUN a2ensite 001* 000*
-RUN service apache2 restart
+#RUN service apache2 restart
