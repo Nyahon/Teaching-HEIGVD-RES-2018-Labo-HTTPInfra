@@ -6,6 +6,8 @@ RUN apt-get update && \
 #RUN apt-get install vim
 #RUN Y
 COPY apache2-foreground /usr/local/bin/
+COPY templates /var/apache2/templates
+
 COPY src/* /etc/apache2/sites-available/
 #RUN service apache2 restart
 RUN a2enmod proxy proxy_http

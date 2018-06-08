@@ -8,7 +8,7 @@
         ProxyPass '/api/random/' 'http://<?php print "$DYNAMIC_APP"?>/'
         ProxyPassReverse '/api/random/' 'http://<?php print "$DYNAMIC_APP"?>/'
 
-        ProxyPass '/' 'http//<?php print "$STATIC_APP"?>/'
+        ProxyPass '/' 'http://<?php print "$STATIC_APP"?>/'
         ProxyPassReverse '/' 'http://<?php print "$STATIC_APP"?>/'
 
 </VirtualHost>
