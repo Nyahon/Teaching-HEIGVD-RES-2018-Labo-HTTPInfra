@@ -24,8 +24,11 @@
         ProxyPass '/' 'balancer://mycluster/'
         ProxyPassReverse '/' 'balancer://mycluster/'
 
-	<Location /balancer-manager>
-    		SetHandler balancer-manager
-   		Require host demo.res.ch
+	<Location "/balancer-manager">
+ 		SetHandler balancer-manager
+ 		Order Deny,Allow
+ 		Deny from all
+ 		Allow from all
 	</Location>
+ 	ProxyPass /balancer-manager !
 </VirtualHost>
