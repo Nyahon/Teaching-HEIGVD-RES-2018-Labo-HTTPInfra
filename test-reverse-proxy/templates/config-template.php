@@ -8,6 +8,16 @@
 ?>
 <VirtualHost *:80>
         ServerName demo.res.ch
+
+        <Location "/balancer-manager">
+                SetHandler balancer-manager
+                Order Deny,Allow
+                Deny from all
+                Allow from all
+        </Location>
+        ProxyPass /balancer-manager !
+
+
 	<Proxy balancer://myclusterrandom>
     		BalancerMember 'http://<?php print "$DYNAMIC_APP1"?>'
     		BalancerMember 'http://<?php print "$DYNAMIC_APP2"?>'
@@ -24,11 +34,4 @@
         ProxyPass '/' 'balancer://mycluster/'
         ProxyPassReverse '/' 'balancer://mycluster/'
 
-	<Location "/balancer-manager">
- 		SetHandler balancer-manager
- 		Order Deny,Allow
- 		Deny from all
- 		Allow from all
-	</Location>
- 	ProxyPass /balancer-manager !
 </VirtualHost>
